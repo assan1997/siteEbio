@@ -1,0 +1,367 @@
+@font-face {
+  font-family: "Muli-Regular";
+  src: url("../fonts/muli/Muli-Regular.ttf"); }
+@font-face {
+  font-family: "Muli-SemiBold";
+  src: url("../fonts/muli/Muli-SemiBold.ttf"); }
+*{
+	box-sizing: border-box;
+	margin:0;
+	padding:0;
+
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+a:hover,a:focus,a:visited,a:link{
+	text-decoration: none;
+	color: #000;
+}
+body{
+	font-family: "Muli-Regular";
+}
+.spanPanier{
+	background: url('/images/panier1.png')center;
+	background-size: contain;
+}
+
+.navbar-default{
+	background: #fff;
+	border-radius: 0;
+	border:none;
+  position: fixed;
+}
+.logo{
+	color: rgb(63, 201, 63);
+	font-weight: bold;
+	font-size: 20px;
+	text-shadow: 2px 2px #333;
+
+}
+.btn-default:hover{
+	background: #fff;
+}
+.pull-right li{
+	width: 150px;
+	border:none;
+	padding:10px 20px 10px 20px;
+	margin-top: 10px;
+	color:#fff;
+}
+#navbar-default{
+	transition: 0.5s;
+}
+.categories{
+	border:1px solid whitesmoke;
+	height: 400px;
+	background: whitesmoke;
+	border: none;
+	padding-top: 8px;
+}
+.les-categories{
+	border: none;
+	background:#fff;
+	height:50px;
+	padding: 10px 20px 10px 20px;
+	margin:5px;
+}
+.element{
+	display:inline-block;
+	width:30px;
+	height: 30px;
+	padding: 5px;
+	color: #fff;
+	text-align: center;
+	background:red;
+	border-radius: 50px;
+	margin-bottom: -5px;
+	display: none;
+}
+.titre-categorie{
+	font-weight: bolder;
+}
+.cover{
+	border:1px solid whitesmoke;
+	height:450px;
+	background:url('/images/bg.jpg') center;
+	background-size: cover;
+}
+.divider{
+	margin:5px;
+}
+.promotion{
+	border:1px solid whitesmoke;
+	height: 200px;
+	margin-top: px;
+}
+.article-promotion{
+border:none;
+height: 100%;
+}
+.banniere-pub{
+	border:1px solid whitesmoke;
+	height: 200px;
+	margin-top:1px;
+}
+.banniere-pub-0{
+	background:url('/images/pub0.jpg') center;
+	background-size: cover;
+}
+.banniere-pub-1{
+	background:url('/images/pub1.jpg') center;
+	background-size: cover;
+}
+.banniere-pub-2{
+	background:url('/images/pub2.jpg') center;
+	background-size: cover;
+}
+.banniere-pub-3{
+	background:url('/images/main.jpg') center;
+	background-size: cover;
+}
+.banniere-pub-4{
+	background:url('/images/main1.jpg') center;
+	background-size: cover;
+}
+.banniere-pub-5{
+	background:url('/images/i.jpg') center;
+	background-size: cover;
+}
+.produits{
+border:1px solid whitesmoke;
+margin-top:20px;
+}
+.image-produit{
+	border:none;
+	height: 300px;
+	position: relative;
+	transition:all ease-in-out 0.5s;
+}
+.overlay{
+	padding: 30px;
+	height: 100%;
+	color:transparent;
+	background: #000;
+	opacity: 0.7;
+	transition:color ease-in-out 0.5s;
+	text-align: center;
+}
+.overlay:hover{
+	height: 100%;
+	color: #fff;
+}
+.info{
+	display:none;
+}
+.overlay:hover.info{
+	display: block;
+	color: #fff;
+}
+.paypal{
+	height: 100px;
+	background: url('/images/paypal.png') center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.visa{
+	height: 100px;
+	background: url('/images/visa.jpeg') center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.orange{
+	height: 100px;
+	background: url('/images/orange.jpg') center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#overlay{
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.5;
+	color:#000;
+	display: none;	
+}
+.image-produit:hover > #overlay{
+	display: block;
+	transition:all ease-in-out 0.5s;
+}
+.ajouter-panier{
+	height: 40px;
+	background:rgb(8, 231, 8);
+	color: #fff;
+	font-size: 15px;
+}
+.type-produit{
+	font-size: 15px;
+	font-weight: bold;
+	height: 50px;
+	background-color: rgb(201, 51, 51);
+	color: whitesmoke;
+}
+input{
+	border: none;
+	border-radius:0;
+	font-size:15px;
+}
+.qte{
+	border:1px solid whitesmoke;
+	height: 30px;
+	width: 70px;
+}
+.quantite{
+	font-weight: bold;
+	font-size: 20px;
+	cursor: pointer;
+}
+.boutton-grand-panier{
+	height: 100px;
+	width: 100px;
+	border-radius: 100px;
+	border:1px solid #000;
+	font-size:60px;
+	border:4px dotted #000;
+	position: relative;
+	top:35%;
+	left:30%;
+}
+.boutton-petit-panier{
+	height: 100px;
+	width: 100px;
+	border-radius: 100px;
+	border:1px solid #000;
+	font-size:60px;
+	border:4px dotted #000;
+	position: relative;
+	top:33%;
+	left:33%;
+}
+#categorie{
+	font-size: 20px;
+	font-weight: bold;
+}
+.img-panier{
+	height: 50px;
+	width: 50px;
+	background:url('/images/panier1.png') center;
+	background-size: contain;
+}
+.panier-xs{
+	position: fixed;
+	z-index: 1000;
+	font-size: 15px;
+	border: 1px solid orange;
+	border-radius:100px;
+	color:orange;
+	top:20%;
+	left: 60%;
+	padding: 30px;
+}
+.inputCommande{
+	border:0px;
+	height: 40px;
+	background-color: #f5f5f5;
+	border-bottom: 1px solid rgb(214, 214, 214);
+	 width: 100%;
+	 font-size: 25px;
+}
+.btn-order{
+    padding:10px;
+    font-size: 16px;
+    color: #fff;
+    background-color:rgb(63, 201, 63);
+    text-decoration: none;
+    text-shadow: 2px 2px #333;
+    border-radius: 0;
+    transition:all ease-in-out 0.5s;
+
+}
+.btn-order:hover, .btn-order:focus{
+    color: #fff;
+    background-color: #000; 
+}
+.fa-bookmark{
+	font-size: 30px;
+	color:rgb(88, 165, 88);
+
+}
+.navbar-brand{
+	border-left:1px solid whitesmoke;
+}
+.coverOver{
+	background:#000;
+	opacity: 0.6;
+	height: 100%;
+	width: 100%;
+}
+.cat{
+	margin-top: 5px;
+}
+#categorie{
+cursor: pointer;
+position:
+}
+.image-cousteau{
+	height: 200px;
+	background:url('/images/cousteau.png') center;
+	background-size:contain;
+	background-repeat: no-repeat;
+}
+table {
+text-align: center;
+}
+
+/* partie special administration*/
+
+.contain{
+	margin-top:65px;
+}
+.admin-btn-order{
+    padding:10px;
+    font-size: 16px;
+    color: #fff;
+    background-color:rgb(63, 201, 63);
+    text-decoration: none;
+    text-shadow: 1px 1px #000;
+    border-radius: 0;
+    transition:all ease-in-out 0.5s;
+    border-radius: 100px;
+    margin-top: 10px;
+}
+.admin-btn-order:hover, .btn-order:focus{
+    color: #fff;
+    background-color: #000; 
+}
+.action{
+	height: 700px;
+	padding: 30px;
+}
+.bar-navigation ,.action{
+	background:rgb(6, 6, 48);
+	opacity: 0.8;
+}
+.bar-navigation{
+	margin-top: 80px;
+
+}
+.les-commandes{
+	background: #000;
+	opacity: 0.8;
+}
+.cat-form{
+	cursor: pointer;
+}
+footer{
+	background: black;
+	position: relative;
+	background-size:cover;
+	background-repeat: no-repeat;
+	position:relative;
+	height:500px;
+	text-align: center;
+	padding: 80px;
+	color: #fff;
+}
+

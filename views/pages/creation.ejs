@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ebio|creer un compte</title>
+    <!-- Bootstrap -->
+     <link href="/css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -- >
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="background:url('/images/main.jpg')center center;background-repeat: no-repeat;background-size: cover;">
+      <header>
+        <nav id="navbar-default"class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+            <div class="navbar-header">
+              <a href="Javascript:history.back()">
+              <ul class="navbar-brand">
+                <p style="font-size: 50px"class="logo">E-bio cote d'ivoire</p>
+              </ul>
+              </a>
+            </div>
+            <div>
+              <ul class="nav navbar-nav navbar-right">
+                <li></li>
+              </ul>
+            </div>
+          </div>
+          </nav>
+    </header>
+    <div class="container">
+      <div style="padding:100px;margin-top:100px;"class="well">
+        <div class="row">
+        <form action="creation.ejs"method="post">
+          <div class="col-md-12">
+            <legend><h2 style="font-weight: bold;">Creer un compte utilisateur</h2></legend>
+            <div class="row">
+             <div style="margin-top: 15px;"class="form-group col-md-6">
+            <input style="font-size:20px"class="champ inputCommande"type="text"placeholder="nom utilisateur"name="nom"required>
+          </div>
+          <div style="margin-top: 15px;"class="form-group col-md-6">
+            <input id="password"style="font-size:20px"class="champ inputCommande"type="password"placeholder="mot de passe"name="password"required>
+          </div>
+          <div style="margin-top: 10px;"class="form-group col-md-6">
+            <input id="passwordConf"style="font-size:20px"class="champ inputCommande"type="password"placeholder="confimation mot de passe"required>
+          </div>
+          <div style="display:none;margin-top: 5px;"class="alert alert-success div-match form-group col-md-12">
+            <i class="far fa-check-circle fa-2x"></i> Mots de passe identiques pour pouvez continuer !
+          </div>
+           <div style="margin-top:5px;"class="form-group col-md-6">
+            <button id="creation"class="btn btn-order">Creer un compte</button>
+          </div>
+           <div style="text-align:center ;margin-top: 20px;"class="pull-right form-group col-md-6">
+            <h4><a href="login.ejs">connexion</a></h4>
+          </div>
+           <% if(locals.success){%>
+           <div style="margin-top: 5px;"class="alert alert-success form-group col-md-6">
+            <i class="far fa-check-circle fa-2x"></i> <h4><%=success%></h4>
+          </div>
+          <%}%>
+          <% if(locals.echec){%>
+           <div style="margin-top: 5px;"class="alert alert-danger form-group col-md-6">
+            <i class="fas fa-exclamation-triangle fa-2x"></i><h4> <%=echec%></h4>
+          </div>
+          <%}%>
+          </div>
+          </div>
+        </form>
+        </div>
+        </div>
+        </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+     <script src="/js/jquery-3.3.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.js"></script>
+</body>
+</html>

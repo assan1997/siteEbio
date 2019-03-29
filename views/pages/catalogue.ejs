@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ebio|catalogue</title>
+    <!-- Bootstrap -->
+    <link href="/css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <header>
+        <nav id="navbar-default"class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+            <div class="navbar-header">
+              <a href="">
+              <ul class="navbar-brand">
+                <p class="logo">E-bio cote d'ivoire</p>
+              </ul>
+              <a>
+            </div>
+            <div>
+              <ul class=" visible-xs nav navbar-nav navbar-right">
+                 <a href="/panier.ejs">
+                  <li>
+                      <span class="panier-xs btn btn-default panier"><img class="img-responsive"src="/images/panier1.png"><span class="element"></span></span>
+                </li>
+              </a>
+              </ul>
+            </div>
+            <div>
+              <ul class="hidden-xs nav navbar-nav navbar-right">
+               <a href="panier.ejs">  <li class="img-panier"><span class="element"></span></li></a>
+              </ul>
+              <ul class="hidden-xs nav navbar-nav navbar-right">
+               <h5 id="livraison"style="margin-right:10px;">Livraison : 6 jours / 7</h5>
+              </ul>
+            </div>
+          </div>
+          </nav>
+    </header>
+            <div class="row">
+            <div class="cover col-md-12">
+              <div class="coverOver">
+            </div>
+          </div>
+       <div class="divider">
+       </div>
+
+            <div class="container">
+
+              <div class="row">
+                  <div class="hidden-xs col-md-3">
+                <div class="row">
+                  <% for(var i=0; i<=5; i++){%>
+               <div class="banniere-pub banniere-pub-<%=i%> col-md-12">
+                <div class="row overlay">
+                    <% if(i==0){%>
+                    <h2><%='Fruitéééé !!!' %></h2>
+                    <%}%>
+                    <% if(i==1){%>
+                    <h2><%='Delices de fraise' %></h2>
+                  <%}%>
+                  <% if(i==2){%>
+                    <h3><%='Pour votre santé mangez 5 fruits et légumes par jour' %></h3>
+                    plus info sur <a href="https://www.mangez-bougez.fr"class="info"> www.mangez-bougez.fr </a>
+                  <%}%>
+                </div>
+                </div>
+                 <%}%>
+                </div>
+              </div>
+              <div class="col-md-9">
+    <% for(item of items){%>
+    <form action="catalogue.ejs"method="post">
+                <div class="produits col-md-4">
+              <div class="parent row">
+                <i class="fas fa-bookmark"></i> <span style="font-size:20px;font-weight: bold;"id="categorie"><%=item.name%></span>
+                <div style="background: url('images/<%=item.image%>')center center;background-size: cover;background-repeat: no-repeat;"class="image-produit col-md-12">
+                    <div id="overlay">
+                     <button data-id="1"class="visible-xs boutton-petit-panier "><span class="glyphicon glyphicon-shopping-cart"></span></button>
+                      <button data-id="1"class="hidden-xs boutton-grand-panier">
+                        <span style="color:green"class="glyphicon glyphicon-shopping-cart"></span></button>
+                      </button>
+                  </div>
+                
+                 
+                </div>
+                 <div class="col-md-6 form-group">
+                   <input style="padding:8px;text-align:center;border-radius:50px;background:#000; font-weight: bold;font-size:20px;margin-top:5px;color: #fff;"id="price"value="<%=item.price + ' FCFA le kg'%>"type="text"name="prix"readonly>
+                 </div>
+                   <div class="col-md-12 form-group">
+                    <input class="qte"value="1"type="number" name="quantite">
+                    <input class="hidden"value="<%=item.name%>"type="text"name="nom">
+                  <input class="hidden" type="text" name="images"value="images/<%=item.image%>">
+                  <input class="hidden"type="text" name="id"value="<%=item.id%>">
+                 </div>
+
+              </div>
+            </div>
+          </form>
+          <%}%>
+                </div>
+              </div>
+              </div>
+            </div>
+            <% include footer%>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+     <script src="/js/jquery-3.3.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/js.js"></script>
+    <script src="/js/jquery.js"></script>
+    </body>
+</html>

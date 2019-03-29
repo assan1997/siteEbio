@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ebio|panier</title>
+    <!-- Bootstrap -->
+    <link href="/css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -- >
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></s cript>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+        <nav id="navbar-default"class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+            <div class="navbar-header">
+              <a href="market.ejs">
+              <ul class="navbar-brand">
+                <p class="logo">E-bio cote d'ivoire</p>
+              </ul>
+              <a>
+            </div>
+            <div>
+            </div>
+            <div>
+              <ul class="hidden-xs nav navbar-nav navbar-right">
+               <a href="panier.ejs">  <li class="img-panier"><span class="element"></span></li></a>
+              </ul>
+              <ul class="hidden-xs nav navbar-nav navbar-right">
+               <h5 id="livraison1"style="margin-right:10px;">Livraison : 6 jours / 7</h5>
+              </ul>
+            </div>
+          </div>
+          </nav>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <%if(locals.panier){%>
+          <div class="row">
+            <div class="col-md-2">
+              <a class="btn btn-default" style="margin-top:90px ;display: block;" href="Javascript:history.back()" ><span class="glyphicon glyphicon-chevron-left"></span> catalogue</a>
+            </div>
+          </div>
+          
+          <h1 style="margin-top:55px;font-weight: bold;">Votre panier</h1>
+          
+          <table class="table table-bordered table-striped table-condensed">
+        <tr>
+        <th><h4>Produits</h4></th>
+        <th><h4>Noms</h4></th>
+        <th><h4>Prix</h4></th>
+        <th><h4>Quantités</h4></th>
+        <th><h4>Action</h4> 
+        </th>
+      </tr>
+            <% var message=''%>
+            <% var index=-1%>
+            <% var total =0%>
+             <%for(element of panier){%>
+             <% index++%>
+             <% if(element.quantite <= 0){%>
+             <% element.quantite =1%>
+             <%}%>
+
+             <% total = total+element.prix*element.quantite%>
+            <tr>
+            <% var prix = parseFloat(element.prix)%>
+             <% var qte = parseFloat(element.quantite)%>
+             <td><img style="width: 100px;height: 100px;" src="<%=element.images%>"></td>
+              <td><h4><%=element.nom%></h4></td>
+              <td><h4><%=prix*qte + ' FCFA'%><h4></td>
+              <td><h4><%=qte + ' kg'%> <h4></td>
+              <td>
+                <h4><a href="/panier/supprimer/<%=index%>">✘</a></h4>
+              </td>
+            </tr>
+             <%}%>
+       <% if(total == 0){%>
+       <td class="alert alert-success"colspan="5"><h2>Votre Panier est vide<h2></td>
+       <%}%>
+        <% if(total != 0){%>
+        <td colspan="5"><h3 style="font-weight: bold;">Total panier : <%=total + ' FCFA'%><h3>
+         
+         <a style="margin-bottom:5px;"class="pull-right btn btn-order"data-toggle="modal"data-target="#modal"> <h4> Proceder à la commande</h4></a>
+        </td>
+       <%}%>
+    </table>
+     <% if(total != 0){%>
+     <form method="post"action="panier.ejs">
+          <input class="hidden "role="button" type="text"name="nom"value="vider">
+          <button class="vider col-md-12 pull-right btn btn-order"> <span class="glyphicon glyphicon-trash "></span> vider le panier</button>
+        </form>
+          <%}%>
+          <%}%>
+
+          <div style="margin-top: 150px;"class="row">
+            <div class="col-md-12">
+              <% if(locals.etat){%>
+       <% if(etat =='erreur'){%>
+       <div  class="alert alert-danger col-md-12">
+          <i style="font-size:50px;"class="fas fa-exclamation-triangle"></i>
+       </div>
+       <%}%>
+       <%}%>
+        <% if(locals.etat){%>
+       <% if(etat =='success'){%>
+       <div style="height:200px;"class="alert alert-success col-md-12">
+          <i style="font-size:50px;"class="far fa-check-circle"></i>Merci : votre commande a été pris en compte , nous vous remercions pour votre fidelité
+       </div>
+       <%}%>
+       <%}%>    
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+          <div class="modal fade"id="modal">
+                  <div class="modal-dialog ">
+                      <div class="modal-content modal-info">
+                          <div class="modal-header">
+                               <a class="close"data-dismiss="modal"></i>✘</a>
+                              <h4 class="modal-title">
+                                <p class="logo">E bio cote d'ivoire</p> <span>Fiche de commande</span>
+                              </h4>
+                          </div>
+                          <div class="modal-body">
+                            <form method="post"action="/panier/commander/"class="col-md-12 well">
+                              <div class="row">
+                                <legend style="font-weight: bold;">Veuillez remplir le formulaire pour effectuer votre commande</legend>
+                               <div class="form-group col-md-6">
+                                <input class="inputCommande"type="text"name="nom"placeholder="nom"required>
+                               </div>
+                               <div class="form-group col-md-6">
+                                 <input class="inputCommande"type="text"name="prenom"placeholder="prenom"required>
+                               </div>
+                                <div class="form-group col-md-6">
+                                 <input class="inputCommande"type="tel"name="contact"placeholder="Contact"required>
+                               </div>
+                               <div class="form-group col-md-6">
+                                 <input class="inputCommande"type="text"name="pointlivraison"placeholder="Point de livraison"required>
+                               </div>
+                               <div class="form-group col-md-6">
+                                 <input class="hidden inputCommande"type="text" value="<%=total%>"name="totalpanier">
+                               </div>
+                               <div class="form-group col-md-12">
+                               <h3>Le montant de votre commande est  <%=total + 'FCFA'%></h3>
+                               </div>
+                               <div class="form-group col-md-12">
+                                 <h3 style="font-weight: bold;">Modes de paiment</h3>
+                                 <div class="col-md-12">
+                                  
+                                 <div class="col-md-4 orange">
+                                   <div class="row overlay">non disponible</div>
+                                   </div>
+                                 <div class="col-md-4 visa">
+                                   <div class="row overlay">non disponible</div>
+                                 </div>
+                                 <div class="col-md-4 paypal">
+                                      <div class="row overlay">non disponible</div>
+                                 </div>
+                               </div>
+                                 <div class="col-md-12">
+                                  Votre paiement se fera à la livraison de votre commande .<br>
+                                  Avant tout echange de devise veuillez vous assurer de l'integrité de votre commande.<br>
+                                  En cas de problème veuillez contacter le service client.
+                                 </div>
+                                 <div class="col-md-6 col-md-offset-3">
+                                 <button style="margin-top:15px;width:100% ;height:45px;"class="btn btn-order"type="submit">Commander</button>
+                                 </div>
+                               </div>
+                               </div>
+                             </form>
+                          </div>
+                          <div class="modal-footer"> 
+                          </div>
+                      </div>
+                  </div>
+              </div>
+    </div>
+   <% include footer%>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+     <script src="/js/jquery-3.3.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/js.js"></script>
+</body>
+</html>

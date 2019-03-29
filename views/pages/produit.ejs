@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ebio|admin</title>
+    <!-- Bootstrap -->
+    <link href="/css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+        <nav id="navbar-default"class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-header">
+              <a href="javascript:history.back()">
+              <ul class="navbar-brand">
+                <p class="logo">E-bio cote d'ivoire</p>
+              </ul>
+              </a>
+            </div>
+            <div>
+              <a href="#">
+              <ul class="hidden-xs nav navbar-nav navbar-right navbar-brand">
+              <span class="glyphicon glyphicon-log-out"></span>
+              </ul>
+            </a>
+            </div>
+            
+          </nav>
+    </header>
+          <div class="contain row">
+            <div class="action col-lg-2">
+              <div class="row">
+                <% var nom=''%>
+                <% for(element of items){%>
+                 <% nom=element.categories_name%>
+                 <%}%>
+                  <h1 style="font-weight: bold;color:#fff;"><%=nom%></1>
+              </div>
+              <div class="row">
+               
+              </div>
+         </div>
+            <div class="col-lg-10">
+             <table style="text-align: justify;"class="table table-bordered table-striped table-condensed">
+              <thead>
+                <tr>
+                <th><h4>Produits</h4></th>
+                <th><h4>Noms</h4></th>
+                <th><h4>Prix</h4></th>
+                <th><h4>Description</h4></th>
+                <th><h4>Action</h4> 
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+                 <tr>
+                
+              <% for(element of items){%>
+             
+             <td><img style="width: 70px;height: 70px;>"src="/images/<%=element.image%>"></td>
+              <td><h5><%=element.name%></h5></td>
+              <td><h5><%=element.price%><h5></td>
+              <td><h5><%=element.description%><h5></td>
+                <td>
+                  <button class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span></button>
+                  <button class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
+                  <button class="btn btn-warning">Promotion</button>
+                  <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>
+              <td>
+              </td>
+            </tr>
+            <%}%>
+              </tbody>
+         </table>
+
+            </div>
+          </div>
+        <% include footer%>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+     <script src="/js/jquery-3.3.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/js.js"></script>
+    <script src="/js/jquery.js"></script>
+    </body>
+</html>
